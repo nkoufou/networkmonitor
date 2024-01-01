@@ -1,0 +1,12 @@
+{
+	"emailEnable": "true",
+    "smtpServer": "smtp.gmail.com",
+    "smtpPort": 587,
+    "smtpUser": "user@gmail.com",
+    "smtpPassword": "password",
+    "from": "user@gmail.com",
+    "to": "anotheruser@gmail.com",
+    "pingInterval": 15,
+    "logInterval": 5,
+    "logFilePath": "NetworkMonitor.log"
+}
