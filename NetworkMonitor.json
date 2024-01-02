@@ -1,5 +1,5 @@
 {
-	"emailEnable": "true",
+	"emailEnable": "false",
     "smtpServer": "smtp.gmail.com",
     "smtpPort": 587,
     "smtpUser": "user@gmail.com",
