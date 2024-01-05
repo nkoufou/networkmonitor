@@ -142,7 +142,15 @@ while ($true) {
         $ping = Test-Connection -ComputerName $ip -Count 1 -Quiet
 
         if ($ping) {
-            $responseTime = (Test-Connection -ComputerName $ip -Count 1).ResponseTime
+            $pingInfo = Test-Connection -ComputerName $ip -Count 1
+            $responseTime = 0
+            # it appears there is a difference in output properties between Windows PowerShell and PowerShell Core
+            if ($pingInfo.PSObject.Properties.Match('ResponseTime').Count -gt 0) {
+                $responseTime = $pingInfo.ResponseTime
+            } elseif ($pingInfo.PSObject.Properties.Match('Latency').Count -gt 0) {
+                $responseTime = $pingInfo.Latency
+            }
+
             $responseTimes[$ip] += $responseTime
 
             if ($responseTime -le $maxResponseTime) {
